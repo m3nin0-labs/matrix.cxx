@@ -14,7 +14,11 @@ namespace MatrixH
 
         double get(int ncol, int nrow);
         double set(int ncol, int nrow);
-
+		
+		Matrix& operator +(const Matrix& m_obj);
+		Matrix& operator -(const Matrix& m_obj);
+		Matrix& operator *(const Matrix& m_obj);
+		Matrix& operator /(const Matrix& m_obj);
     };
 }
 
