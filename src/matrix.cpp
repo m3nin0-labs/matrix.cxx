@@ -84,6 +84,15 @@ MatrixH::Matrix& MatrixH::Matrix::matmul(MatrixH::Matrix m_obj)
 	return *m;
 }
 
+int* MatrixH::Matrix::shape()
+{
+	int* shp = new int[2];
+	shp[0] = this->ncol;
+	shp[1] = this->nrow;
+	
+	return shp;
+}
+
 int main()
 {
 	MatrixH::Matrix m1 = MatrixH::Matrix(1, 1);

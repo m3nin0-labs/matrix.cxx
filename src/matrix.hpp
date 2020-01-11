@@ -24,6 +24,10 @@ namespace MatrixH
 		Matrix& subtract(Matrix m_obj);
 		Matrix& divide(Matrix m_obj);
 		Matrix& matmul(Matrix m_obj);
+		
+		Matrix& T();
+		
+		int* shape();
     };
 }
 
