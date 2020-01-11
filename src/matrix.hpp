@@ -28,7 +28,12 @@ namespace MatrixH
 		Matrix& T();
 		
 		int* shape();
+		
+		void print();
     };
+	
+	Matrix& ones(int ncol, int nrow);
+	Matrix& zeros(int ncol, int nrow);
 }
 
 #endif

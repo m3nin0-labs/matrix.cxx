@@ -93,10 +93,53 @@ int* MatrixH::Matrix::shape()
 	return shp;
 }
 
+void MatrixH::Matrix::print()
+{
+	for(int i = 0; i < this->ncol; i++)
+	{
+		for(int j = 0; j < this->nrow; j++)
+		{
+			std::cout << this->get(i, j);
+		}
+		std::cout << std::endl;
+	}
+}
+
+MatrixH::Matrix& MatrixH::zeros(int ncol, int nrow)
+{
+	MatrixH::Matrix* m = new MatrixH::Matrix(ncol, nrow);
+	
+	for(int i = 0; i < ncol; i++)
+	{
+		for(int j = 0; j < nrow; j++)
+		{
+			m->set(i, j, 0);
+		}
+	}
+	return *m;
+}
+
+MatrixH::Matrix& MatrixH::ones(int ncol, int nrow)
+{
+	MatrixH::Matrix* m = new MatrixH::Matrix(ncol, nrow);
+	
+	for(int i = 0; i < ncol; i++)
+	{
+		for(int j = 0 ; j < nrow; j++)
+		{
+			m->set(i, j, 1);
+		}
+	}
+	return *m;
+}
+
 int main()
 {
-	MatrixH::Matrix m1 = MatrixH::Matrix(1, 1);
-	MatrixH::Matrix m2 = MatrixH::Matrix(2, 2);
-	
-	m1 + m2;
+	MatrixH::Matrix m_ones = MatrixH::ones(5, 5);
+	MatrixH::Matrix m_zeros = MatrixH::zeros(10, 10);
+
+	m_ones.print();
+	m_zeros.print();
+
+	return 0;
 }
