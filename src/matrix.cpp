@@ -45,13 +45,12 @@ MatrixH::Matrix& MatrixH::Matrix::sum(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
-	#pragma omp parallel
+	#pragma omp parallel for
+	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
-		for(int i = 0; i < this->ncol * this->nrow; i++)
-		{
-			m->data[i] = this->data[i] + m_obj.data[i];
-		}
+		m->data[i] = this->data[i] + m_obj.data[i];
 	}
+
 	return *m;
 }
 
@@ -59,13 +58,12 @@ MatrixH::Matrix& MatrixH::Matrix::subtract(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
-	#pragma omp parallel
+	#pragma omp parallel for
+	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
-		for(int i = 0; i < this->ncol * this->nrow; i++)
-		{
-			m->data[i] = this->data[i] - m_obj.data[i];
-		}
+		m->data[i] = this->data[i] - m_obj.data[i];
 	}
+
 	return *m;
 }
 
@@ -73,13 +71,11 @@ MatrixH::Matrix& MatrixH::Matrix::divide(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
-	#pragma omp parallel
+	#pragma omp parallel for
+	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
-		for(int i = 0; i < this->ncol * this->nrow; i++)
-		{
-			m->data[i] = this->data[i] / m_obj.data[i];
-		}		
-	}
+		m->data[i] = this->data[i] / m_obj.data[i];
+	}		
 
 	return *m;
 }
@@ -88,12 +84,10 @@ MatrixH::Matrix& MatrixH::Matrix::matmul(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
-	#pragma omp parallel
+	#pragma omp parallel for
+	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
-		for(int i = 0; i < this->ncol * this->nrow; i++)
-		{
-			m->data[i] = this->data[i] * m_obj.data[i];
-		}
+		m->data[i] = this->data[i] * m_obj.data[i];
 	}
 	
 	return *m;
