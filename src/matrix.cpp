@@ -1,4 +1,6 @@
+#ifdef HAVE_OPENMP
 #include <omp.h>
+#endif
 #include <iostream>
 #include "matrix.hpp"
 
@@ -45,7 +47,9 @@ MatrixH::Matrix& MatrixH::Matrix::sum(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
+	#ifdef HAVE_OPENMP
 	#pragma omp parallel for
+	#endif
 	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
 		m->data[i] = this->data[i] + m_obj.data[i];
@@ -58,7 +62,9 @@ MatrixH::Matrix& MatrixH::Matrix::subtract(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
+	#ifdef HAVE_OPENMP
 	#pragma omp parallel for
+	#endif
 	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
 		m->data[i] = this->data[i] - m_obj.data[i];
@@ -71,7 +77,9 @@ MatrixH::Matrix& MatrixH::Matrix::divide(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
+	#ifdef HAVE_OPENMP
 	#pragma omp parallel for
+	#endif
 	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
 		m->data[i] = this->data[i] / m_obj.data[i];
@@ -84,7 +92,9 @@ MatrixH::Matrix& MatrixH::Matrix::matmul(MatrixH::Matrix m_obj)
 {
 	MatrixH::Matrix* m = new MatrixH::Matrix(this->ncol, this->nrow);
 	
+	#ifdef HAVE_OPENMP
 	#pragma omp parallel for
+	#endif
 	for(int i = 0; i < this->ncol * this->nrow; i++)
 	{
 		m->data[i] = this->data[i] * m_obj.data[i];
