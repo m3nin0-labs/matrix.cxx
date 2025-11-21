@@ -1,6 +1,3 @@
-# Created by https://www.gitignore.io/api/c++,cmake
-# Edit at https://www.gitignore.io/?templates=c++,cmake
-
 ### C++ ###
 # Prerequisites
 *.d
@@ -53,4 +50,11 @@ _deps
 # External projects
 *-prefix/
 
-# End of https://www.gitignore.io/api/c++,cmake
+### Conan ###
+conan_imports_manifest.txt
+conanbuildinfo.*
+conaninfo.txt
+conan.lock
+conanbuild/
+conanrun/
+build/
