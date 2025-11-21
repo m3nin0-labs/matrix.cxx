@@ -1,0 +1,11 @@
+[requires]
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[options]
+# OpenMP can be managed through Conan if needed
+# openmp/4.5.1:shared=False
+
+[imports]
